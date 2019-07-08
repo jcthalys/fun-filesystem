@@ -9,10 +9,10 @@ import com.tabajara.files.Directory
 object FileSystem extends App {
 
   val firstRoot = Directory.ROOT
-  var state = State(firstRoot, firstRoot)
   val scanner = new Scanner(System.in)
+  var state = State(firstRoot, firstRoot)
 
-  while(true) {
+  while (true) {
     state.show
     state = Command.from(scanner.nextLine()).apply(state)
   }
