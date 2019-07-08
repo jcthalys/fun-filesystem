@@ -6,6 +6,12 @@ import com.tabajara.filesystem.FileSystemException
 class File(override val parentPath: String, override val name: String, contents: String)
   extends DirEntry(parentPath, name) {
 
+  def appendContents(newContents: String): DirEntry =
+    setContents(contents + "\n" + newContents)
+
+  def setContents(newContents: String): File =
+    new File(parentPath, name, newContents)
+
   override def asDirectory: Directory =
     throw new FileSystemException("file can not be converted to a directory")
 
